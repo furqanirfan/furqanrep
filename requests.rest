@@ -1,0 +1,29 @@
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "name":"Adnan",
+    "email":"adnan.irfan@gmail.com",
+    "password":"adnan"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "adnan.irfan@gmail.com",
+    "password":"adnan"
+}
+
+###
+GET http://localhost:5000/api/users
+Authorization: Bearer 
+
+
+###
+GET http://localhost:5000/api/refresh_token
+
+###
+
+DELETE http://localhost:5000/api/auth/refresh_token
