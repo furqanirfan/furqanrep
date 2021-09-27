@@ -11,7 +11,9 @@ let localPoolConfig = {
 
 const poolConfig = process.env.DATABASE_URL ? {
     connectionString: process.env.DATABASE_URL,
-    ssl:{rejectUnauthorized:false}
+    ssl:{
+        rejectUnauthorized:false
+    }
 } : localPoolConfig;
 
 const pool = new Pool(poolConfig);
