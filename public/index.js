@@ -1,6 +1,7 @@
 import {jwtDecode} from "./jwt-decode.js";
 
 let accessToken = '';
+let refreshToken = '';
 let api_url = '/api';//Will need to make this explicit if front-end on different server
 const divLogin = document.getElementById("div-login");
 const formLogin = document.getElementById("form-login");
@@ -22,6 +23,7 @@ formLogin.onsubmit = async e => {
     return;
   }
   accessToken = loginDetails.accessToken;
+  refreshToken = loginDetails.refreshToken;
   const jwtDecoded = jwtDecode(accessToken);
   pStatus.innerHTML = `Login Successful! </br> Hello ${jwtDecoded.user_name}</br> Your id is ${jwtDecoded.user_id}</br> Your email is ${jwtDecoded.user_email}`;
   showLoginPanel(false);
@@ -83,7 +85,8 @@ buttonRefreshToken.onclick = async () => {
 async function fetchRefreshToken(){
   const res = await fetch(`${api_url}/auth/refresh_token`,{
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'refresh-token':  refreshToken,
     },
     mode: 'cors',
     credentials: 'include'

@@ -47,8 +47,8 @@ router.post("/login", async (req, res) => {
 
 router.get("/refresh_token", (req, res) => {
   try {
-    const refreshToken = req.cookies.refresh_token;
-    // console.log(req.cookies);
+    console.log(req.headers);
+    const refreshToken = req.headers["refresh-token"];
     if (refreshToken === null) return res.sendStatus(401);
     jwt.verify(
       refreshToken,
