@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     // });
     
     const userss = await pool.query(
-      "UPDATE Customers SET access_token = $1, refresh_token= $2 WHERE user_email = $3",
+      "UPDATE users SET access_token = $1, refresh_token= $2 WHERE user_email = $3",
       [tokens.accessToken, tokens.refreshToken, email]
     );
     res.json(tokens);
