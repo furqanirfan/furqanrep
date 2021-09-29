@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import authRouter from "./routes/auth-routes.js";
 import usersRouter from "./routes/users-routes.js";
 // import { Sequelize } from "sequelize";
-import { User } from "./models/Users.js";
+// import { User } from "./models/Users.js";
 dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -18,7 +18,7 @@ const corsOptions = { credentials: true, origin: process.env.URL || "*" };
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use("/", express.static(join(__dirname, "public")));
 app.use("/api/auth", authRouter);

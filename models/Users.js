@@ -20,9 +20,9 @@ const User = sequelize.define("user", {
 
 try {
   await sequelize.authenticate();
-  console.log("Connection has been established successfully.");
-  const list = await User.findAll({raw: true});
-  console.log(list);
+  // console.log("Connection has been established successfully.");
+  // const list = await User.findAll({raw: true});
+  // console.log(list);
 } catch (error) {
   console.error("Unable to connect to the database:", error);
 }

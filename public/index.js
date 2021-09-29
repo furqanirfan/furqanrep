@@ -110,10 +110,13 @@ async function deleteToken(){
   const res = await fetch(`${api_url}/auth/refresh_token`,{
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + accessToken,
     },
     mode: 'cors',
     credentials: 'include'
   });  
+  accessToken = null;
+  refreshToken = null;
   return await res.json();
 }
