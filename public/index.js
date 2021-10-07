@@ -17,7 +17,7 @@ let showLoginPanel = (bShow) => {
 formLogin.onsubmit = async e => {
   e.preventDefault();
   const loginDetails = await login({ email: formLogin.email.value, password: formLogin.password.value });
-  console.log(loginDetails);
+  // console.log(loginDetails);
   if (loginDetails.error) {
     pStatus.innerText = loginDetails.error;
     return;

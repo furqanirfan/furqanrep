@@ -1,10 +1,10 @@
-import express from "express";
-import jwt from "jsonwebtoken";
-// import pool from "../db.js";
-import bcrypt from "bcrypt";
-import { jwtTokens } from "../utils/jwt-helpers.js";
-import { User } from "../models/Users.js";
-import {authenticateToken} from '../middleware/authorization.js';
+const express = require ("express");
+const jwt = require ("jsonwebtoken");
+// const pool = require ("../db.js");
+const bcrypt = require ("bcrypt");
+const { jwtTokens } = require ("../utils/jwt-helpers.js");
+const { User } = require ("../models/Users.js");
+const {authenticateToken} = require ('../middleware/authorization.js');
 
 
 const router = express.Router();
@@ -83,7 +83,7 @@ router.get("/refresh_token", (req, res) => {
         //   sameSite: "none",
         //   secure: true,
         // });
-        console.log(user)
+        // console.log(user)
         await User.update(
           {
             refresh_token: tokens.refreshToken,
@@ -106,7 +106,7 @@ router.get("/refresh_token", (req, res) => {
 
 router.delete("/refresh_token", authenticateToken,  async (req, res) => {
   try {
-    console.log("______", req.user);
+    // console.log("______", req.user);
     // res.clearCookie("refresh_token");
     await User.update(
       { refresh_token: null, access_token: null },
@@ -123,4 +123,4 @@ router.delete("/refresh_token", authenticateToken,  async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
